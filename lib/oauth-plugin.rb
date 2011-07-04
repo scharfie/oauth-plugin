@@ -4,6 +4,18 @@ require 'oauth/request_proxy/rack_request'
 require 'oauth/server'
 require 'oauth/controllers/application_controller_methods'
 
+module OAuth
+  autoload :Server, 'oauth/server'
+  
+  module Controllers
+    autoload :ProviderController, 'oauth/controllers/provider_controller'
+  end
+
+  module Rack
+    autoload :OAuthFilter, 'oauth/rack/oauth_filter'
+  end
+end
+
 if Rails.version =~ /^3\./
   require 'oauth/request_proxy/rack_request'
 
